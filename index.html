@@ -85,7 +85,7 @@
           d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
         </svg>
        </div>
-       <h3 id="customer-type-2" class="text-2xl font-bold text-gray-900 mb-4">ATE Test Engineer</h3>
+       <h3 id="customer-type-2" class="text-2xl font-bold text-gray-900 mb-4">Design Engineer</h3>
        <p class="text-gray-600 leading-relaxed">
         Automatically set test limits and calculate Cpk: Save hours of manual data analysis
        </p>
@@ -138,6 +138,11 @@
 
   <script>
     const defaultConfig = {
+      solution_1_title: "Reduce your ATE data collection time by 98%",
+      solution_1_description: "Are you tired of spending hours in loading your Test program at different Tester setups? Are you tired of repeating loop runs and full flow runs? Our proprietary tool automates this mundane task with a click where the tool will ensure data collection in an automated manner without your intervention. This will also save Test Function verification time for the ATE Test engineer like gathering loop runs or few random devices. You can see a demo below.",
+      solution_2_title: "LimSetter: Automatically set your test limits",
+      solution_2_description: "Stop wasting time on manual limit adjustments. Our system automatically proposes limits based on Cpk in real time and visualizes custom limits on distribution plots. This ensures instantaneous validation of yield using test data.",
+
       solution_1_video: '<div class="w-full max-w-3xl mx-auto"><iframe width="100%" height="315" src="https://www.youtube.com/embed/I8hQ-lLERCo" title="ATE Test data collection Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-2xl"></iframe></div>',
       solution_2_video: '<div class="w-full max-w-3xl mx-auto"><iframe width="100%" height="315" src="https://www.youtube.com/embed/9Jv00rg4zD0" title="LimSetter: Automatically set your test limits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-2xl"></iframe></div>'
     };
@@ -147,14 +152,30 @@
       document.getElementById('solution-section').classList.add('hidden');
     }
 
+    
     function showSolution(type) {
       document.getElementById('customer-section').classList.add('hidden');
       document.getElementById('solution-section').classList.remove('hidden');
+
+      const titleElement = document.getElementById('solution-title');
+      const descriptionElement = document.getElementById('solution-description');
       const videoElement = document.getElementById('video-embed');
-      videoElement.innerHTML = (type === 1)
-        ? defaultConfig.solution_1_video
-        : defaultConfig.solution_2_video;
+
+      if (type === 1) {
+        // ATE Test Engineer / Technician
+        titleElement.textContent = defaultConfig.solution_1_title;
+        descriptionElement.textContent = defaultConfig.solution_1_description;
+        document.getElementById('video-container').style.display = 'block';
+        videoElement.innerHTML = defaultConfig.solution_1_video;
+      } else {
+        // LimSetter for Design/Test Engineers
+        titleElement.textContent = defaultConfig.solution_2_title;
+        descriptionElement.textContent = defaultConfig.solution_2_description;
+        document.getElementById('video-container').style.display = 'block';
+        videoElement.innerHTML = defaultConfig.solution_2_video;
+      }
     }
+    
   </script>
 
   <!-- One-time SW + cache cleanup -->
